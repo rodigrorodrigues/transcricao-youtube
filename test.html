@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teste Transcrição</title>
+</head>
+<body>
+  <h1>Teste de Transcrição</h1>
+  <input type="text" id="url" placeholder="Cole o link do vídeo aqui" size="80">
+  <button onclick="enviar()">Enviar</button>
+  <pre id="resultado"></pre>
+
+  <script>
+    async function enviar() {
+      const videoUrl = document.getElementById("url").value;
+      const resposta = await fetch("/transcricao", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ video_url: videoUrl })
+      });
+
+      const dados = await resposta.json();
+      document.getElementById("resultado").textContent = JSON.stringify(dados, null, 2);
+    }
+  </script>
+</body>
+</html>

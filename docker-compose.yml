@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  transcricao-api:
+    build: .
+    ports:
+      - "9199:9199"
+    restart: unless-stopped
+    environment:
+      PORT: "9199"
+      DEBUG: "False"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9199/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.log
+.git
+.gitignore
+test_*.py
+test.html
+*.md
+generated-icon.png
